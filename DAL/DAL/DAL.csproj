@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="UsersDL.cs" />
+=======
+    <Compile Include="UsersDAL.cs" />
+>>>>>>> 001c2c7b27bdac0a26f29446ff1acee9f6b9789b
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

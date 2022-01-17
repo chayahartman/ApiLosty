@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 C:\ApiLosty\ApiLosty\DAL\DAL\bin\Debug\DAL.dll
 C:\ApiLosty\ApiLosty\DAL\DAL\bin\Debug\DAL.pdb
 C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.dll
 C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.pdb
+=======
+C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\DAL\DAL\bin\Debug\DAL.dll
+C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\DAL\DAL\bin\Debug\DAL.pdb
+C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\DAL\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\DAL\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\DAL\DAL\obj\Debug\DAL.dll
+C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\DAL\DAL\obj\Debug\DAL.pdb
+>>>>>>> 001c2c7b27bdac0a26f29446ff1acee9f6b9789b
