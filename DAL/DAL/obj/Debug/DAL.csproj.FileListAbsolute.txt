@@ -1,0 +1,6 @@
+C:\ApiLosty\ApiLosty\DAL\DAL\bin\Debug\DAL.dll
+C:\ApiLosty\ApiLosty\DAL\DAL\bin\Debug\DAL.pdb
+C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.dll
+C:\ApiLosty\ApiLosty\DAL\DAL\obj\Debug\DAL.pdb
