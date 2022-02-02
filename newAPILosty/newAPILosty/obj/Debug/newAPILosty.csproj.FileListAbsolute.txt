@@ -68,3 +68,5 @@ C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\obj\Debug\newAPILosty.csproj.CoreCo
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\obj\Debug\newAPILosty.csproj.CopyComplete
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\obj\Debug\newAPILosty.dll
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\obj\Debug\newAPILosty.pdb
+C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\DL.dll
+C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\DL.pdb

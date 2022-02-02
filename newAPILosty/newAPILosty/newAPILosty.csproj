@@ -49,6 +49,9 @@
     <Reference Include="DAL">
       <HintPath>..\..\DAL\DAL\obj\Debug\DAL.dll</HintPath>
     </Reference>
+    <Reference Include="DL">
+      <HintPath>..\..\DL\DL\bin\Debug\DL.dll</HintPath>
+    </Reference>
     <Reference Include="FromHeaderAttribute, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FromHeaderAttribute.2.0.4\lib\net45\FromHeaderAttribute.dll</HintPath>
     </Reference>

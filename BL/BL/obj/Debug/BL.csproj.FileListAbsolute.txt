@@ -19,3 +19,5 @@ C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\BL\BL\obj\Debug\BL.csproj.
 C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\BL\BL\obj\Debug\BL.dll
 C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\BL\BL\obj\Debug\BL.pdb
 >>>>>>> 001c2c7b27bdac0a26f29446ff1acee9f6b9789b
+C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\DL.dll
+C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\DL.pdb

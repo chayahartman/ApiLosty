@@ -1,0 +1,6 @@
+C:\ApiLosty\ApiLosty\DL\DL\bin\Debug\DL.dll
+C:\ApiLosty\ApiLosty\DL\DL\bin\Debug\DL.pdb
+C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.csprojAssemblyReference.cache
+C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.csproj.CoreCompileInputs.cache
+C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.dll
+C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.pdb
