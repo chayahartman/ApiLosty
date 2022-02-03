@@ -48,7 +48,6 @@ C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\roslyn\vbc.rsp
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\roslyn\VBCSCompiler.exe
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\roslyn\VBCSCompiler.exe.config
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\BL.dll
-C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\DAL.dll
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\FromHeaderAttribute.dll
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\ApiLosty\ApiLosty\newAPILosty\newAPILosty\bin\Newtonsoft.Json.dll

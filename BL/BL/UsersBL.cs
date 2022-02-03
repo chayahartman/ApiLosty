@@ -25,5 +25,27 @@ namespace BL
                 return -1;
 
         }
+
+        public DataTable UsersList()
+        {
+
+            UsersDL dl = new UsersDL();
+
+            DataTable dt = dl.count();
+            return dt;
+
+        }
+
+
+        public List<String> countItems()
+        {
+
+            UsersDL dl = new UsersDL();
+
+            List<String> res = dl.Scalar("SPgetItemsList");
+            
+                return res;
+
+        }
     }
 }

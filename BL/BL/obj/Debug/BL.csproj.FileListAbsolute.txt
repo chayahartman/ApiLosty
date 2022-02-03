@@ -1,7 +1,6 @@
 <<<<<<< HEAD
 C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\BL.dll
 C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\BL.pdb
-C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\DAL.dll
 C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\DAL.pdb
 C:\ApiLosty\ApiLosty\BL\BL\obj\Debug\BL.csprojAssemblyReference.cache
 C:\ApiLosty\ApiLosty\BL\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
