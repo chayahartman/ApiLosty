@@ -44,7 +44,7 @@ namespace BL
 
             List<String> res = dl.Scalar("SPgetItemsList");
             
-                return res;
+            return res;
 
         }
     }

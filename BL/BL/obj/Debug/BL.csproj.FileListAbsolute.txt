@@ -20,3 +20,13 @@ C:\Users\Hadasa\Documents\project2022\APIgit\ApiLosty\BL\BL\obj\Debug\BL.pdb
 >>>>>>> 001c2c7b27bdac0a26f29446ff1acee9f6b9789b
 C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\DL.dll
 C:\ApiLosty\ApiLosty\BL\BL\bin\Debug\DL.pdb
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\bin\Debug\BL.dll
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\bin\Debug\BL.pdb
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\bin\Debug\DL.dll
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\bin\Debug\DAL.pdb
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\bin\Debug\DL.pdb
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.csproj.AssemblyReference.cache
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.dll
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.pdb

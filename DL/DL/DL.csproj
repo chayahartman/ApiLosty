@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericProc.cs" />
+    <Compile Include="ItemsDL.cs" />
     <Compile Include="UsersDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

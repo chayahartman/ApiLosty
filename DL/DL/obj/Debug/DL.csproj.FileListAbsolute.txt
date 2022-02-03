@@ -4,3 +4,9 @@ C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.csprojAssemblyReference.cache
 C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.csproj.CoreCompileInputs.cache
 C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.dll
 C:\ApiLosty\ApiLosty\DL\DL\obj\Debug\DL.pdb
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\DL\DL\bin\Debug\DL.dll
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\DL\DL\bin\Debug\DL.pdb
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\DL\DL\obj\Debug\DL.csproj.AssemblyReference.cache
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\DL\DL\obj\Debug\DL.csproj.CoreCompileInputs.cache
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\DL\DL\obj\Debug\DL.dll
+C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\DL\DL\obj\Debug\DL.pdb
