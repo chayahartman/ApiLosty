@@ -30,3 +30,13 @@ C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.csproj.Cor
 C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.csproj.CopyComplete
 C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.dll
 C:\Users\Hadasa\Documents\project2022\Api\ApiLosty\BL\BL\obj\Debug\BL.pdb
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\bin\Debug\BL.dll
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\bin\Debug\BL.pdb
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\bin\Debug\DL.dll
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\bin\Debug\DAL.pdb
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\bin\Debug\DL.pdb
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\obj\Debug\BL.dll
+C:\Users\חיה הרטמן\OneDrive\שולחן העבודה\פרויקט2022\פרויקט API\ApiLosty\BL\BL\obj\Debug\BL.pdb
