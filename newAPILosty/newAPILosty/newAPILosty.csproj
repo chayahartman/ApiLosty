@@ -103,18 +103,23 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EmailSettingsController.cs" />
+    <Compile Include="Controllers\FindingsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\LossesController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\QuestionsFindingsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DB.cs" />
     <Compile Include="Models\EmailSettings.cs" />
+    <Compile Include="Models\Findings.cs" />
+    <Compile Include="Models\QuestionsFindings.cs" />
     <Compile Include="Models\Items.cs" />
     <Compile Include="Models\Losses.cs" />
     <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -72,5 +72,32 @@ namespace DL
             return id;
         }
 
+        public void DML(string sp, List<SqlParameter> param)
+        {
+
+            SqlCommand com = new SqlCommand(sp, connection);
+            com.CommandType = CommandType.StoredProcedure;
+
+            foreach (SqlParameter p in param)
+            {
+                com.Parameters.Add(p);
+            }
+
+            try
+            {
+                connection.Open();
+                com.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
+
+
 }

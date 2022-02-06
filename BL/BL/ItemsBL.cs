@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DL;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace BL
 {
@@ -15,5 +16,12 @@ namespace BL
             GenericProc gc = new GenericProc();
             return gc.DataTable("SPgetItemsList");
         }
+        public void DeleteItem(List<SqlParameter> lsParam)
+        {
+            GenericProc gc = new GenericProc();
+            gc.DML("SPdeleteItem", lsParam);
+        }
+
+
     }
 }
