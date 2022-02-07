@@ -12,7 +12,6 @@ namespace BL
     {
         public DataTable FindingsQuestionsList()
         {
-
             GenericProc gc = new GenericProc();
             return gc.DataTable("SPgetAllFindingsQuestions");
         }

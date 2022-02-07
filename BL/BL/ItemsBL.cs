@@ -16,12 +16,22 @@ namespace BL
             GenericProc gc = new GenericProc();
             return gc.DataTable("SPgetItemsList");
         }
+
         public void DeleteItem(List<SqlParameter> lsParam)
         {
             GenericProc gc = new GenericProc();
             gc.DML("SPdeleteItem", lsParam);
         }
-
+        public void AddItem(List<SqlParameter> lsParam)
+        {
+            GenericProc gc = new GenericProc();
+            gc.DML("SPaddItem", lsParam);
+        }
+        //public void DeleteItem(int id)
+        //{
+        //    GenericProc gc = new GenericProc();
+        //    gc.DML("SPdeleteItem",id);
+        //}
 
     }
 }

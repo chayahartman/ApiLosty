@@ -39,6 +39,37 @@ namespace DL
             return dt;
           
         }
+        
+        public DataTable DataTableWithParams(string sp,List<SqlParameter> param)
+        {
+
+            SqlCommand com = new SqlCommand(sp, connection);
+            com.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da;
+            DataTable dt = new DataTable();
+
+            foreach (SqlParameter p in param)
+            {
+                com.Parameters.Add(p);
+            }
+            try
+            {
+                connection.Open();
+                da = new SqlDataAdapter(com);
+                da.Fill(dt);
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dt;
+
+        }
 
         public int ExecuteNonQuery(string sp, List<SqlParameter> param)
         {
@@ -97,7 +128,33 @@ namespace DL
                 connection.Close();
             }
         }
+
+        //    public void DML(string sp, int id)
+        //    {
+
+        //        SqlCommand com = new SqlCommand(sp, connection);
+        //        com.CommandType = CommandType.StoredProcedure;
+
+        //        SqlParameter param = new SqlParameter("@itemrId", id);
+        //        param.SqlDbType = SqlDbType.Int;
+        //        com.Parameters.Add(param);
+
+
+        //        try
+        //        {
+        //            connection.Open();
+        //            com.ExecuteNonQuery();
+        //        }
+        //        catch (SqlException ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+        //        finally
+        //        {
+        //            connection.Close();
+        //        }
+        //    }
+        }
+
+
     }
-
-
-}
