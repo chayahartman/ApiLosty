@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a5e8912cc7a4003bf5f8dabd2380ac8" Name="Diagram1">
+        <EntityTypeShape EntityType="losty2022Model.tblEmailSetting" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="losty2022Model.tblFinding" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="losty2022Model.tblItem" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="losty2022Model.tblLoss" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="losty2022Model.tblQuestion" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="losty2022Model.tblUser" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="losty2022Model.Fk_EmailSettings_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="losty2022Model.Fk_Findings_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="losty2022Model.FK_Items_Findings" ManuallyRouted="false" />
+        <AssociationConnector Association="losty2022Model.FK_Items_Losses" ManuallyRouted="false" />
+        <AssociationConnector Association="losty2022Model.Fk_Losses_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="losty2022Model.tblQuestions_Findings" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

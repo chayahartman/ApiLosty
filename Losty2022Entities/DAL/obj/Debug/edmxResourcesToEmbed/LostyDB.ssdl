@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="losty2022Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblEmailSettings">
+    <Key>
+      <PropertyRef Name="emailSettingsId" />
+    </Key>
+    <Property Name="emailSettingsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="emailAboutNewRequest" Type="bit" />
+    <Property Name="emailFromAnotherUser" Type="bit" />
+    <Property Name="systemEmailAboutExistsRequest" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblFindings">
+    <Key>
+      <PropertyRef Name="findingId" />
+    </Key>
+    <Property Name="findingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="findingName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="itemId" Type="int" />
+    <Property Name="findDate" Type="datetime" />
+    <Property Name="findLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="findingStatus" Type="int" />
+    <Property Name="findingDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="findingModel" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tblItems">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="itemName" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblLosses">
+    <Key>
+      <PropertyRef Name="lostId" />
+    </Key>
+    <Property Name="lostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="lostName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="itemId" Type="int" />
+    <Property Name="lostDate" Type="datetime" />
+    <Property Name="lostLocation" Type="nvarchar" MaxLength="50" />
+    <Property Name="lostStatus" Type="int" />
+    <Property Name="lostDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="lostModel" Type="nvarchar" MaxLength="30" />
+    <Property Name="returnDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblQuestions">
+    <Key>
+      <PropertyRef Name="questionId" />
+    </Key>
+    <Property Name="questionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="questionContent" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblQuestions_Findings">
+    <Key>
+      <PropertyRef Name="findingId" />
+      <PropertyRef Name="questionId" />
+    </Key>
+    <Property Name="findingId" Type="int" Nullable="false" />
+    <Property Name="questionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="userEmail" Type="nvarchar" MaxLength="25" />
+    <Property Name="userPassword" Type="nvarchar" MaxLength="6" />
+    <Property Name="isManager" Type="bit" />
+  </EntityType>
+  <Association Name="Fk_EmailSettings_Users">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblEmailSettings" Type="Self.tblEmailSettings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tblEmailSettings">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Findings_Questions">
+    <End Role="tblFindings" Type="Self.tblFindings" Multiplicity="1" />
+    <End Role="tblQuestions_Findings" Type="Self.tblQuestions_Findings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFindings">
+        <PropertyRef Name="findingId" />
+      </Principal>
+      <Dependent Role="tblQuestions_Findings">
+        <PropertyRef Name="findingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Findings_Users">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+    <End Role="tblFindings" Type="Self.tblFindings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tblFindings">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Items_Findings">
+    <End Role="tblItems" Type="Self.tblItems" Multiplicity="0..1" />
+    <End Role="tblFindings" Type="Self.tblFindings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblItems">
+        <PropertyRef Name="itemId" />
+      </Principal>
+      <Dependent Role="tblFindings">
+        <PropertyRef Name="itemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Items_Losses">
+    <End Role="tblItems" Type="Self.tblItems" Multiplicity="0..1" />
+    <End Role="tblLosses" Type="Self.tblLosses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblItems">
+        <PropertyRef Name="itemId" />
+      </Principal>
+      <Dependent Role="tblLosses">
+        <PropertyRef Name="itemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Losses_Users">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+    <End Role="tblLosses" Type="Self.tblLosses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tblLosses">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questions_Findings">
+    <End Role="tblQuestions" Type="Self.tblQuestions" Multiplicity="1" />
+    <End Role="tblQuestions_Findings" Type="Self.tblQuestions_Findings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblQuestions">
+        <PropertyRef Name="questionId" />
+      </Principal>
+      <Dependent Role="tblQuestions_Findings">
+        <PropertyRef Name="questionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SPaddItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ItemName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPaddNewFinding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="findingName" Type="nvarchar" Mode="In" />
+    <Parameter Name="itemId" Type="int" Mode="In" />
+    <Parameter Name="findDate" Type="datetime" Mode="In" />
+    <Parameter Name="findLocation" Type="nvarchar" Mode="In" />
+    <Parameter Name="findingDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="findingModel" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPaddNewLost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <Parameter Name="lostName" Type="nvarchar" Mode="In" />
+    <Parameter Name="itemId" Type="int" Mode="In" />
+    <Parameter Name="lostDate" Type="datetime" Mode="In" />
+    <Parameter Name="lostLocation" Type="nvarchar" Mode="In" />
+    <Parameter Name="lostDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="lostModel" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPaddQuestion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="content" Type="nvarchar" Mode="In" />
+    <Parameter Name="findingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPaddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SPdeleteItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemrId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPfindingsPerUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPgetAllFindingQuestions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetAllFindings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetAllFindingsQuestions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetAllLosses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetDefaultQuestions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetEmailSettingsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetFindingQuestions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="findingId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPgetItemsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetQuestionsList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPgetUserEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPgetUsersList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SPlosessPerUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPlostDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lostId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPsearchCorrespondingFindings" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lostLocation" Type="nvarchar" Mode="In" />
+    <Parameter Name="itemId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPsearchCorrespondingLosses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="findLocation" Type="nvarchar" Mode="In" />
+    <Parameter Name="itemId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPupdateFindingStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="findingId" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SPupdateLostStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lostId" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="losty2022ModelStoreContainer">
+    <EntitySet Name="tblEmailSettings" EntityType="Self.tblEmailSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFindings" EntityType="Self.tblFindings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblItems" EntityType="Self.tblItems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLosses" EntityType="Self.tblLosses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblQuestions" EntityType="Self.tblQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblQuestions_Findings" EntityType="Self.tblQuestions_Findings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Fk_EmailSettings_Users" Association="Self.Fk_EmailSettings_Users">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblEmailSettings" EntitySet="tblEmailSettings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Findings_Questions" Association="Self.FK_Findings_Questions">
+      <End Role="tblFindings" EntitySet="tblFindings" />
+      <End Role="tblQuestions_Findings" EntitySet="tblQuestions_Findings" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Findings_Users" Association="Self.Fk_Findings_Users">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblFindings" EntitySet="tblFindings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Items_Findings" Association="Self.FK_Items_Findings">
+      <End Role="tblItems" EntitySet="tblItems" />
+      <End Role="tblFindings" EntitySet="tblFindings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Items_Losses" Association="Self.FK_Items_Losses">
+      <End Role="tblItems" EntitySet="tblItems" />
+      <End Role="tblLosses" EntitySet="tblLosses" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Losses_Users" Association="Self.Fk_Losses_Users">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblLosses" EntitySet="tblLosses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questions_Findings" Association="Self.FK_Questions_Findings">
+      <End Role="tblQuestions" EntitySet="tblQuestions" />
+      <End Role="tblQuestions_Findings" EntitySet="tblQuestions_Findings" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

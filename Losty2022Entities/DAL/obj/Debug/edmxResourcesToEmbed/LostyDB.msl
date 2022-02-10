@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="losty2022ModelStoreContainer" CdmEntityContainer="losty2022Entities">
+    <EntitySetMapping Name="tblEmailSettings">
+      <EntityTypeMapping TypeName="losty2022Model.tblEmailSetting">
+        <MappingFragment StoreEntitySet="tblEmailSettings">
+          <ScalarProperty Name="emailSettingsId" ColumnName="emailSettingsId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="emailAboutNewRequest" ColumnName="emailAboutNewRequest" />
+          <ScalarProperty Name="emailFromAnotherUser" ColumnName="emailFromAnotherUser" />
+          <ScalarProperty Name="systemEmailAboutExistsRequest" ColumnName="systemEmailAboutExistsRequest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFindings">
+      <EntityTypeMapping TypeName="losty2022Model.tblFinding">
+        <MappingFragment StoreEntitySet="tblFindings">
+          <ScalarProperty Name="findingId" ColumnName="findingId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="findingName" ColumnName="findingName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="findDate" ColumnName="findDate" />
+          <ScalarProperty Name="findLocation" ColumnName="findLocation" />
+          <ScalarProperty Name="findingStatus" ColumnName="findingStatus" />
+          <ScalarProperty Name="findingDescription" ColumnName="findingDescription" />
+          <ScalarProperty Name="findingModel" ColumnName="findingModel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblItems">
+      <EntityTypeMapping TypeName="losty2022Model.tblItem">
+        <MappingFragment StoreEntitySet="tblItems">
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLosses">
+      <EntityTypeMapping TypeName="losty2022Model.tblLoss">
+        <MappingFragment StoreEntitySet="tblLosses">
+          <ScalarProperty Name="lostId" ColumnName="lostId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="lostName" ColumnName="lostName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="lostDate" ColumnName="lostDate" />
+          <ScalarProperty Name="lostLocation" ColumnName="lostLocation" />
+          <ScalarProperty Name="lostStatus" ColumnName="lostStatus" />
+          <ScalarProperty Name="lostDescription" ColumnName="lostDescription" />
+          <ScalarProperty Name="lostModel" ColumnName="lostModel" />
+          <ScalarProperty Name="returnDate" ColumnName="returnDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblQuestions">
+      <EntityTypeMapping TypeName="losty2022Model.tblQuestion">
+        <MappingFragment StoreEntitySet="tblQuestions">
+          <ScalarProperty Name="questionId" ColumnName="questionId" />
+          <ScalarProperty Name="questionContent" ColumnName="questionContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="losty2022Model.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="isManager" ColumnName="isManager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tblQuestions_Findings" TypeName="losty2022Model.tblQuestions_Findings" StoreEntitySet="tblQuestions_Findings">
+      <EndProperty Name="tblFindings">
+        <ScalarProperty Name="findingId" ColumnName="findingId" />
+      </EndProperty>
+      <EndProperty Name="tblQuestions">
+        <ScalarProperty Name="questionId" ColumnName="questionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="SPaddItem" FunctionName="losty2022Model.Store.SPaddItem" />
+    <FunctionImportMapping FunctionImportName="SPaddNewFinding" FunctionName="losty2022Model.Store.SPaddNewFinding" />
+    <FunctionImportMapping FunctionImportName="SPaddNewLost" FunctionName="losty2022Model.Store.SPaddNewLost" />
+    <FunctionImportMapping FunctionImportName="SPaddQuestion" FunctionName="losty2022Model.Store.SPaddQuestion" />
+    <FunctionImportMapping FunctionImportName="SPaddUser" FunctionName="losty2022Model.Store.SPaddUser" />
+    <FunctionImportMapping FunctionImportName="SPdeleteItem" FunctionName="losty2022Model.Store.SPdeleteItem" />
+    <FunctionImportMapping FunctionImportName="SPfindingsPerUser" FunctionName="losty2022Model.Store.SPfindingsPerUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPfindingsPerUser_Result">
+          <ScalarProperty Name="findingId" ColumnName="findingId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="findingName" ColumnName="findingName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="findDate" ColumnName="findDate" />
+          <ScalarProperty Name="findLocation" ColumnName="findLocation" />
+          <ScalarProperty Name="findingStatus" ColumnName="findingStatus" />
+          <ScalarProperty Name="findingDescription" ColumnName="findingDescription" />
+          <ScalarProperty Name="findingModel" ColumnName="findingModel" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetAllFindingQuestions" FunctionName="losty2022Model.Store.SPgetAllFindingQuestions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetAllFindingQuestions_Result">
+          <ScalarProperty Name="findingName" ColumnName="findingName" />
+          <ScalarProperty Name="questionContent" ColumnName="questionContent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetAllFindings" FunctionName="losty2022Model.Store.SPgetAllFindings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetAllFindings_Result">
+          <ScalarProperty Name="findingId" ColumnName="findingId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="findingName" ColumnName="findingName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="findDate" ColumnName="findDate" />
+          <ScalarProperty Name="findLocation" ColumnName="findLocation" />
+          <ScalarProperty Name="findingStatus" ColumnName="findingStatus" />
+          <ScalarProperty Name="findingDescription" ColumnName="findingDescription" />
+          <ScalarProperty Name="findingModel" ColumnName="findingModel" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetAllFindingsQuestions" FunctionName="losty2022Model.Store.SPgetAllFindingsQuestions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetAllFindingsQuestions_Result">
+          <ScalarProperty Name="findingName" ColumnName="findingName" />
+          <ScalarProperty Name="questionContent" ColumnName="questionContent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetAllLosses" FunctionName="losty2022Model.Store.SPgetAllLosses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetAllLosses_Result">
+          <ScalarProperty Name="lostId" ColumnName="lostId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="lostName" ColumnName="lostName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="lostDate" ColumnName="lostDate" />
+          <ScalarProperty Name="lostLocation" ColumnName="lostLocation" />
+          <ScalarProperty Name="lostStatus" ColumnName="lostStatus" />
+          <ScalarProperty Name="lostDescription" ColumnName="lostDescription" />
+          <ScalarProperty Name="lostModel" ColumnName="lostModel" />
+          <ScalarProperty Name="returnDate" ColumnName="returnDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetDefaultQuestions" FunctionName="losty2022Model.Store.SPgetDefaultQuestions" />
+    <FunctionImportMapping FunctionImportName="SPgetEmailSettingsList" FunctionName="losty2022Model.Store.SPgetEmailSettingsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetEmailSettingsList_Result">
+          <ScalarProperty Name="emailSettingsId" ColumnName="emailSettingsId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="emailAboutNewRequest" ColumnName="emailAboutNewRequest" />
+          <ScalarProperty Name="emailFromAnotherUser" ColumnName="emailFromAnotherUser" />
+          <ScalarProperty Name="systemEmailAboutExistsRequest" ColumnName="systemEmailAboutExistsRequest" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetFindingQuestions" FunctionName="losty2022Model.Store.SPgetFindingQuestions" />
+    <FunctionImportMapping FunctionImportName="SPgetItemsList" FunctionName="losty2022Model.Store.SPgetItemsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetItemsList_Result">
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="itemName" ColumnName="itemName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetQuestionsList" FunctionName="losty2022Model.Store.SPgetQuestionsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetQuestionsList_Result">
+          <ScalarProperty Name="questionId" ColumnName="questionId" />
+          <ScalarProperty Name="questionContent" ColumnName="questionContent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPgetUserEmail" FunctionName="losty2022Model.Store.SPgetUserEmail" />
+    <FunctionImportMapping FunctionImportName="SPgetUsersList" FunctionName="losty2022Model.Store.SPgetUsersList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPgetUsersList_Result">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="isManager" ColumnName="isManager" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPlosessPerUser" FunctionName="losty2022Model.Store.SPlosessPerUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPlosessPerUser_Result">
+          <ScalarProperty Name="lostId" ColumnName="lostId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="lostName" ColumnName="lostName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="lostDate" ColumnName="lostDate" />
+          <ScalarProperty Name="lostLocation" ColumnName="lostLocation" />
+          <ScalarProperty Name="lostStatus" ColumnName="lostStatus" />
+          <ScalarProperty Name="lostDescription" ColumnName="lostDescription" />
+          <ScalarProperty Name="lostModel" ColumnName="lostModel" />
+          <ScalarProperty Name="returnDate" ColumnName="returnDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPlostDetails" FunctionName="losty2022Model.Store.SPlostDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPlostDetails_Result">
+          <ScalarProperty Name="lostId" ColumnName="lostId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="lostName" ColumnName="lostName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="lostDate" ColumnName="lostDate" />
+          <ScalarProperty Name="lostLocation" ColumnName="lostLocation" />
+          <ScalarProperty Name="lostStatus" ColumnName="lostStatus" />
+          <ScalarProperty Name="lostDescription" ColumnName="lostDescription" />
+          <ScalarProperty Name="lostModel" ColumnName="lostModel" />
+          <ScalarProperty Name="returnDate" ColumnName="returnDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPsearchCorrespondingFindings" FunctionName="losty2022Model.Store.SPsearchCorrespondingFindings">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPsearchCorrespondingFindings_Result">
+          <ScalarProperty Name="findingId" ColumnName="findingId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="findingName" ColumnName="findingName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="findDate" ColumnName="findDate" />
+          <ScalarProperty Name="findLocation" ColumnName="findLocation" />
+          <ScalarProperty Name="findingStatus" ColumnName="findingStatus" />
+          <ScalarProperty Name="findingDescription" ColumnName="findingDescription" />
+          <ScalarProperty Name="findingModel" ColumnName="findingModel" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPsearchCorrespondingLosses" FunctionName="losty2022Model.Store.SPsearchCorrespondingLosses">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="losty2022Model.SPsearchCorrespondingLosses_Result">
+          <ScalarProperty Name="lostId" ColumnName="lostId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="lostName" ColumnName="lostName" />
+          <ScalarProperty Name="itemId" ColumnName="itemId" />
+          <ScalarProperty Name="lostDate" ColumnName="lostDate" />
+          <ScalarProperty Name="lostLocation" ColumnName="lostLocation" />
+          <ScalarProperty Name="lostStatus" ColumnName="lostStatus" />
+          <ScalarProperty Name="lostDescription" ColumnName="lostDescription" />
+          <ScalarProperty Name="lostModel" ColumnName="lostModel" />
+          <ScalarProperty Name="returnDate" ColumnName="returnDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SPupdateFindingStatus" FunctionName="losty2022Model.Store.SPupdateFindingStatus" />
+    <FunctionImportMapping FunctionImportName="SPupdateLostStatus" FunctionName="losty2022Model.Store.SPupdateLostStatus" />
+  </EntityContainerMapping>
+</Mapping>

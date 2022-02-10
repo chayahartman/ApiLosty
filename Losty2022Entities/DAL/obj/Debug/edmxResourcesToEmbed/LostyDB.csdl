@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="losty2022Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblEmailSetting">
+    <Key>
+      <PropertyRef Name="emailSettingsId" />
+    </Key>
+    <Property Name="emailSettingsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="emailAboutNewRequest" Type="Boolean" />
+    <Property Name="emailFromAnotherUser" Type="Boolean" />
+    <Property Name="systemEmailAboutExistsRequest" Type="Boolean" />
+    <NavigationProperty Name="tblUser" Relationship="Self.Fk_EmailSettings_Users" FromRole="tblEmailSettings" ToRole="tblUsers" />
+  </EntityType>
+  <EntityType Name="tblFinding">
+    <Key>
+      <PropertyRef Name="findingId" />
+    </Key>
+    <Property Name="findingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="findingName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="itemId" Type="Int32" />
+    <Property Name="findDate" Type="DateTime" Precision="3" />
+    <Property Name="findLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="findingStatus" Type="Int32" />
+    <Property Name="findingDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="findingModel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblUser" Relationship="Self.Fk_Findings_Users" FromRole="tblFindings" ToRole="tblUsers" />
+    <NavigationProperty Name="tblItem" Relationship="Self.FK_Items_Findings" FromRole="tblFindings" ToRole="tblItems" />
+    <NavigationProperty Name="tblQuestions" Relationship="Self.tblQuestions_Findings" FromRole="tblFindings" ToRole="tblQuestions" />
+  </EntityType>
+  <EntityType Name="tblItem">
+    <Key>
+      <PropertyRef Name="itemId" />
+    </Key>
+    <Property Name="itemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="itemName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblFindings" Relationship="Self.FK_Items_Findings" FromRole="tblItems" ToRole="tblFindings" />
+    <NavigationProperty Name="tblLosses" Relationship="Self.FK_Items_Losses" FromRole="tblItems" ToRole="tblLosses" />
+  </EntityType>
+  <EntityType Name="tblLoss">
+    <Key>
+      <PropertyRef Name="lostId" />
+    </Key>
+    <Property Name="lostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="lostName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="itemId" Type="Int32" />
+    <Property Name="lostDate" Type="DateTime" Precision="3" />
+    <Property Name="lostLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lostStatus" Type="Int32" />
+    <Property Name="lostDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lostModel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="returnDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblItem" Relationship="Self.FK_Items_Losses" FromRole="tblLosses" ToRole="tblItems" />
+    <NavigationProperty Name="tblUser" Relationship="Self.Fk_Losses_Users" FromRole="tblLosses" ToRole="tblUsers" />
+  </EntityType>
+  <EntityType Name="tblQuestion">
+    <Key>
+      <PropertyRef Name="questionId" />
+    </Key>
+    <Property Name="questionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="questionContent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblFindings" Relationship="Self.tblQuestions_Findings" FromRole="tblQuestions" ToRole="tblFindings" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userEmail" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="userPassword" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="isManager" Type="Boolean" />
+    <NavigationProperty Name="tblEmailSettings" Relationship="Self.Fk_EmailSettings_Users" FromRole="tblUsers" ToRole="tblEmailSettings" />
+    <NavigationProperty Name="tblFindings" Relationship="Self.Fk_Findings_Users" FromRole="tblUsers" ToRole="tblFindings" />
+    <NavigationProperty Name="tblLosses" Relationship="Self.Fk_Losses_Users" FromRole="tblUsers" ToRole="tblLosses" />
+  </EntityType>
+  <Association Name="Fk_EmailSettings_Users">
+    <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblEmailSettings" Type="Self.tblEmailSetting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tblEmailSettings">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Findings_Users">
+    <End Role="tblUsers" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblFindings" Type="Self.tblFinding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tblFindings">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Items_Findings">
+    <End Role="tblItems" Type="Self.tblItem" Multiplicity="0..1" />
+    <End Role="tblFindings" Type="Self.tblFinding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblItems">
+        <PropertyRef Name="itemId" />
+      </Principal>
+      <Dependent Role="tblFindings">
+        <PropertyRef Name="itemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Items_Losses">
+    <End Role="tblItems" Type="Self.tblItem" Multiplicity="0..1" />
+    <End Role="tblLosses" Type="Self.tblLoss" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblItems">
+        <PropertyRef Name="itemId" />
+      </Principal>
+      <Dependent Role="tblLosses">
+        <PropertyRef Name="itemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Losses_Users">
+    <End Role="tblUsers" Type="Self.tblUser" Multiplicity="1" />
+    <End Role="tblLosses" Type="Self.tblLoss" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tblLosses">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tblQuestions_Findings">
+    <End Role="tblFindings" Type="Self.tblFinding" Multiplicity="*" />
+    <End Role="tblQuestions" Type="Self.tblQuestion" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="losty2022Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblEmailSettings" EntityType="Self.tblEmailSetting" />
+    <EntitySet Name="tblFindings" EntityType="Self.tblFinding" />
+    <EntitySet Name="tblItems" EntityType="Self.tblItem" />
+    <EntitySet Name="tblLosses" EntityType="Self.tblLoss" />
+    <EntitySet Name="tblQuestions" EntityType="Self.tblQuestion" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <AssociationSet Name="Fk_EmailSettings_Users" Association="Self.Fk_EmailSettings_Users">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblEmailSettings" EntitySet="tblEmailSettings" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Findings_Users" Association="Self.Fk_Findings_Users">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblFindings" EntitySet="tblFindings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Items_Findings" Association="Self.FK_Items_Findings">
+      <End Role="tblItems" EntitySet="tblItems" />
+      <End Role="tblFindings" EntitySet="tblFindings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Items_Losses" Association="Self.FK_Items_Losses">
+      <End Role="tblItems" EntitySet="tblItems" />
+      <End Role="tblLosses" EntitySet="tblLosses" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Losses_Users" Association="Self.Fk_Losses_Users">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblLosses" EntitySet="tblLosses" />
+    </AssociationSet>
+    <AssociationSet Name="tblQuestions_Findings" Association="Self.tblQuestions_Findings">
+      <End Role="tblFindings" EntitySet="tblFindings" />
+      <End Role="tblQuestions" EntitySet="tblQuestions" />
+    </AssociationSet>
+    <FunctionImport Name="SPaddItem">
+      <Parameter Name="ItemName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPaddNewFinding">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="findingName" Mode="In" Type="String" />
+      <Parameter Name="itemId" Mode="In" Type="Int32" />
+      <Parameter Name="findDate" Mode="In" Type="DateTime" />
+      <Parameter Name="findLocation" Mode="In" Type="String" />
+      <Parameter Name="findingDescription" Mode="In" Type="String" />
+      <Parameter Name="findingModel" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPaddNewLost">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+      <Parameter Name="lostName" Mode="In" Type="String" />
+      <Parameter Name="itemId" Mode="In" Type="Int32" />
+      <Parameter Name="lostDate" Mode="In" Type="DateTime" />
+      <Parameter Name="lostLocation" Mode="In" Type="String" />
+      <Parameter Name="lostDescription" Mode="In" Type="String" />
+      <Parameter Name="lostModel" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPaddQuestion">
+      <Parameter Name="content" Mode="In" Type="String" />
+      <Parameter Name="findingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPaddUser">
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPdeleteItem">
+      <Parameter Name="itemrId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPfindingsPerUser" ReturnType="Collection(losty2022Model.SPfindingsPerUser_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPgetAllFindingQuestions" ReturnType="Collection(losty2022Model.SPgetAllFindingQuestions_Result)" />
+    <FunctionImport Name="SPgetAllFindings" ReturnType="Collection(losty2022Model.SPgetAllFindings_Result)" />
+    <FunctionImport Name="SPgetAllFindingsQuestions" ReturnType="Collection(losty2022Model.SPgetAllFindingsQuestions_Result)" />
+    <FunctionImport Name="SPgetAllLosses" ReturnType="Collection(losty2022Model.SPgetAllLosses_Result)" />
+    <FunctionImport Name="SPgetDefaultQuestions" ReturnType="Collection(String)" />
+    <FunctionImport Name="SPgetEmailSettingsList" ReturnType="Collection(losty2022Model.SPgetEmailSettingsList_Result)" />
+    <FunctionImport Name="SPgetFindingQuestions" ReturnType="Collection(String)">
+      <Parameter Name="findingId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPgetItemsList" ReturnType="Collection(losty2022Model.SPgetItemsList_Result)" />
+    <FunctionImport Name="SPgetQuestionsList" ReturnType="Collection(losty2022Model.SPgetQuestionsList_Result)" />
+    <FunctionImport Name="SPgetUserEmail" ReturnType="Collection(String)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPgetUsersList" ReturnType="Collection(losty2022Model.SPgetUsersList_Result)" />
+    <FunctionImport Name="SPlosessPerUser" ReturnType="Collection(losty2022Model.SPlosessPerUser_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPlostDetails" ReturnType="Collection(losty2022Model.SPlostDetails_Result)">
+      <Parameter Name="lostId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPsearchCorrespondingFindings" ReturnType="Collection(losty2022Model.SPsearchCorrespondingFindings_Result)">
+      <Parameter Name="lostLocation" Mode="In" Type="String" />
+      <Parameter Name="itemId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPsearchCorrespondingLosses" ReturnType="Collection(losty2022Model.SPsearchCorrespondingLosses_Result)">
+      <Parameter Name="findLocation" Mode="In" Type="String" />
+      <Parameter Name="itemId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPupdateFindingStatus">
+      <Parameter Name="findingId" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPupdateLostStatus">
+      <Parameter Name="lostId" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SPfindingsPerUser_Result">
+    <Property Type="Int32" Name="findingId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="findingName" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="itemId" Nullable="true" />
+    <Property Type="DateTime" Name="findDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="findLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="findingStatus" Nullable="true" />
+    <Property Type="String" Name="findingDescription" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="findingModel" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SPgetAllFindingQuestions_Result">
+    <Property Type="String" Name="findingName" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="questionContent" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SPgetAllFindings_Result">
+    <Property Type="Int32" Name="findingId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="findingName" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="itemId" Nullable="true" />
+    <Property Type="DateTime" Name="findDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="findLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="findingStatus" Nullable="true" />
+    <Property Type="String" Name="findingDescription" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="findingModel" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SPgetAllFindingsQuestions_Result">
+    <Property Type="String" Name="findingName" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="questionContent" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SPgetAllLosses_Result">
+    <Property Type="Int32" Name="lostId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="lostName" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="itemId" Nullable="true" />
+    <Property Type="DateTime" Name="lostDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="lostLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="lostStatus" Nullable="true" />
+    <Property Type="String" Name="lostDescription" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lostModel" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="returnDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SPgetEmailSettingsList_Result">
+    <Property Type="Int32" Name="emailSettingsId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="true" />
+    <Property Type="Boolean" Name="emailAboutNewRequest" Nullable="true" />
+    <Property Type="Boolean" Name="emailFromAnotherUser" Nullable="true" />
+    <Property Type="Boolean" Name="systemEmailAboutExistsRequest" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPgetItemsList_Result">
+    <Property Type="Int32" Name="itemId" Nullable="false" />
+    <Property Type="String" Name="itemName" Nullable="false" MaxLength="15" />
+  </ComplexType>
+  <ComplexType Name="SPgetQuestionsList_Result">
+    <Property Type="Int32" Name="questionId" Nullable="false" />
+    <Property Type="String" Name="questionContent" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SPgetUsersList_Result">
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="userName" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="userEmail" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="userPassword" Nullable="true" MaxLength="6" />
+    <Property Type="Boolean" Name="isManager" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPlosessPerUser_Result">
+    <Property Type="Int32" Name="lostId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="lostName" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="itemId" Nullable="true" />
+    <Property Type="DateTime" Name="lostDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="lostLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="lostStatus" Nullable="true" />
+    <Property Type="String" Name="lostDescription" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lostModel" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="returnDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SPlostDetails_Result">
+    <Property Type="Int32" Name="lostId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="lostName" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="itemId" Nullable="true" />
+    <Property Type="DateTime" Name="lostDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="lostLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="lostStatus" Nullable="true" />
+    <Property Type="String" Name="lostDescription" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lostModel" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="returnDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SPsearchCorrespondingFindings_Result">
+    <Property Type="Int32" Name="findingId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="findingName" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="itemId" Nullable="true" />
+    <Property Type="DateTime" Name="findDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="findLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="findingStatus" Nullable="true" />
+    <Property Type="String" Name="findingDescription" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="findingModel" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SPsearchCorrespondingLosses_Result">
+    <Property Type="Int32" Name="lostId" Nullable="false" />
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="lostName" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="itemId" Nullable="true" />
+    <Property Type="DateTime" Name="lostDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="lostLocation" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="lostStatus" Nullable="true" />
+    <Property Type="String" Name="lostDescription" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lostModel" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="returnDate" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>
